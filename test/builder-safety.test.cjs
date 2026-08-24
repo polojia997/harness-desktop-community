@@ -2,7 +2,8 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 
 const {
-  assertBuilderArguments
+  assertBuilderArguments,
+  getBuilderArguments
 } = require("../scripts/run-builder.cjs");
 
 test("builder accepts only unpacked and MSI targets", () => {
@@ -22,4 +23,18 @@ test("builder rejects arbitrary output and publish arguments", () => {
     () => assertBuilderArguments(["--publish", "always"]),
     /Refusing unsupported builder arguments/
   );
+});
+
+test("builder always disables electron-builder publishing", () => {
+  assert.deepEqual(getBuilderArguments(["--dir"]), [
+    "--dir",
+    "--publish",
+    "never"
+  ]);
+  assert.deepEqual(getBuilderArguments(["--win", "msi"]), [
+    "--win",
+    "msi",
+    "--publish",
+    "never"
+  ]);
 });

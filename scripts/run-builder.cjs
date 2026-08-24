@@ -15,9 +15,13 @@ function assertBuilderArguments(args) {
   return args;
 }
 
+function getBuilderArguments(args) {
+  return [...assertBuilderArguments(args), "--publish", "never"];
+}
+
 function main() {
   const projectRoot = path.resolve(__dirname, "..");
-  const args = assertBuilderArguments(process.argv.slice(2));
+  const args = getBuilderArguments(process.argv.slice(2));
   const cacheRoot = path.join(projectRoot, ".cache");
   const builderCache = path.join(cacheRoot, "electron-builder");
   const tempDirectory = path.join(cacheRoot, "temp");
@@ -48,4 +52,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { assertBuilderArguments };
+module.exports = { assertBuilderArguments, getBuilderArguments };
