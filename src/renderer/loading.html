@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self'; script-src 'self'"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Harness Desktop</title>
+    <link rel="stylesheet" href="./loading.css" />
+  </head>
+  <body>
+    <main>
+      <div class="brand" aria-hidden="true">H</div>
+      <h1>Harness Desktop</h1>
+      <p id="status" class="status">请选择工作目录</p>
+      <p id="detail" class="detail"></p>
+
+      <dl class="metadata">
+        <div>
+          <dt>工作目录</dt>
+          <dd id="workspace">-</dd>
+        </div>
+        <div>
+          <dt>Harness</dt>
+          <dd id="version">-</dd>
+        </div>
+      </dl>
+
+      <div class="actions">
+        <button id="choose-workspace" type="button">选择项目目录</button>
+        <button id="retry" class="secondary" type="button" hidden>
+          重试
+        </button>
+        <button id="open-logs" class="secondary" type="button">
+          打开日志
+        </button>
+      </div>
+    </main>
+    <script src="./loading.js"></script>
+  </body>
+</html>

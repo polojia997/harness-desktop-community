@@ -1,0 +1,74 @@
+{
+  "name": "harness-desktop-community",
+  "version": "0.1.4",
+  "private": true,
+  "description": "An unofficial Windows desktop host for DeepSeek Harness.",
+  "main": "src/main/index.cjs",
+  "author": "Harness Desktop contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polojia997/harness-desktop-community.git"
+  },
+  "bugs": {
+    "url": "https://github.com/polojia997/harness-desktop-community/issues"
+  },
+  "homepage": "https://github.com/polojia997/harness-desktop-community#readme",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "postinstall": "node scripts/patch-harness-runtime.cjs",
+    "generate:icon": "node scripts/generate-icon.cjs",
+    "test": "node --test",
+    "smoke:first-launch": "node scripts/smoke-first-launch.cjs",
+    "smoke:native-picker": "node scripts/smoke-native-picker.cjs",
+    "pack": "node scripts/run-builder.cjs --dir",
+    "smoke:packaged": "node scripts/smoke-packaged.cjs",
+    "build:msi": "node scripts/run-builder.cjs --win msi"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh": "0.1.1-rc.2"
+  },
+  "devDependencies": {
+    "electron": "43.4.1",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "community.harness.desktop",
+    "productName": "Harness Desktop",
+    "asar": false,
+    "npmRebuild": false,
+    "afterPack": "scripts/copy-missing-modules.cjs",
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "src/**/*",
+      "build/icon.png",
+      "build/icon.ico",
+      "node_modules/**/*",
+      "package.json",
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "msi",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Harness-Desktop-${version}-${arch}.${ext}"
+    },
+    "msi": {
+      "oneClick": false,
+      "perMachine": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": false
+    }
+  }
+}

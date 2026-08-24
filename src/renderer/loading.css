@@ -1,0 +1,131 @@
+:root {
+  color: #1d232b;
+  background: #f4f5f7;
+  font-family:
+    "Segoe UI",
+    "Microsoft YaHei UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+}
+
+main {
+  width: min(620px, calc(100vw - 48px));
+}
+
+.brand {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #2167d5;
+  border-radius: 8px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 22px 0 10px;
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.status {
+  margin: 0;
+  color: #245c38;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.detail {
+  min-height: 48px;
+  margin: 10px 0 20px;
+  color: #5b6572;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.metadata {
+  margin: 0;
+  border-top: 1px solid #d9dde3;
+  border-bottom: 1px solid #d9dde3;
+}
+
+.metadata > div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.metadata > div + div {
+  border-top: 1px solid #e5e8ec;
+}
+
+dt {
+  color: #687381;
+}
+
+dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  min-height: 38px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid #2167d5;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #2167d5;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1855b6;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+button:focus-visible {
+  outline: 3px solid #9bc1ff;
+  outline-offset: 2px;
+}
+
+button.secondary {
+  color: #27313c;
+  background: #ffffff;
+  border-color: #b8c0ca;
+}
+
+button.secondary:hover {
+  background: #edf0f3;
+}
+
+[hidden] {
+  display: none;
+}
